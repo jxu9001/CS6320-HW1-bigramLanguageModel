@@ -20,6 +20,7 @@ def main():
     # dictionaries to hold various needed counts
     unigram_counts = defaultdict(int)
     bigram_counts = defaultdict(int)
+    add_one_bigram_counts = defaultdict(lambda: 1)
 
     # process each line in the training corpus
     with open(train_file) as f:
@@ -33,10 +34,10 @@ def main():
                 curr_word = processed_line[i]
                 next_word = processed_line[i + 1]
                 bigram_counts[curr_word, next_word] += 1
+                add_one_bigram_counts[curr_word, next_word] += 1
 
-    # calculate add-one counts
+    # calculate add-one unigram counts
     add_one_unigram_counts = {unigram: count + len(unigram_counts) for unigram, count in unigram_counts.items()}
-    add_one_bigram_counts = {bigram: count + 1 for bigram, count in bigram_counts.items()}
 
     # print bigram counts, bigram probabilities, probabilities of each sentence
     if smoothing == 0:
