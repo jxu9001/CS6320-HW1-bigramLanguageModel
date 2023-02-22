@@ -41,7 +41,7 @@ def print_table_header(sentence):
 
 def print_counts_row(sentence, bigram_counts):
     """
-    Prints a row in the bigram counts table
+    Prints the rows of the bigram counts table
     """
     for word1 in sentence:
         row = '{:>10}'.format(word1)
@@ -52,7 +52,7 @@ def print_counts_row(sentence, bigram_counts):
 
 def print_probs_row(sentence, unigram_counts, bigram_counts):
     """
-    Prints a row in the bigram probabilities table
+    Prints the rows of the bigram probabilities table
     """
     for word1 in sentence:
         row = '{:>10}'.format(word1)
@@ -64,7 +64,7 @@ def print_probs_row(sentence, unigram_counts, bigram_counts):
 
 def get_sentence_probability(sentence, unigram_counts, bigram_counts):
     """
-    Returns the probability of the sentence
+    Returns the probability of the given sentence
     """
     sentence_probability = 0
     bigrams = [(sentence[i], sentence[i + 1]) for i in range(len(sentence) - 1)]

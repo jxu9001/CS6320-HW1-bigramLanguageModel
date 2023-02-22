@@ -1,3 +1,7 @@
+# Jerry Xu
+# CS 6320 Spring 2023 Homework 1 (Bigram Language Model)
+# Instructor: Professor Dan Moldovan
+
 from collections import defaultdict
 from sys import argv
 from utils import *
@@ -22,7 +26,7 @@ def main():
         for line in f:
             processed_line = preprocess(line)
             line_length = len(processed_line)
-            # update unigram counts, bigram counts, and possible bigrams
+            # update unigram counts and bigram counts
             for word in processed_line:
                 unigram_counts[word] += 1
             for i in range(line_length - 1):
