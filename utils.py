@@ -29,14 +29,6 @@ def preprocess(line):
     return processed_line
 
 
-def get_bigrams(sentence):
-    """
-    Given a sentence represented as a list, return a list of the bigrams in the sentence
-    """
-    n = len(sentence)
-    return [(sentence[i], sentence[i + 1]) for i in range(n - 1)]
-
-
 def print_table_header(sentence):
     """
     Prints the table header
@@ -59,6 +51,9 @@ def print_counts_row(sentence, bigram_counts):
 
 
 def print_probs_row(sentence, unigram_counts, bigram_counts):
+    """
+    Prints a row in the bigram probabilities table
+    """
     for word1 in sentence:
         row = '{:>10}'.format(word1)
         for word2 in sentence:
@@ -72,7 +67,7 @@ def get_sentence_probability(sentence, unigram_counts, bigram_counts):
     Returns the probability of the sentence
     """
     sentence_probability = 0
-    bigrams = get_bigrams(sentence)
+    bigrams = [(sentence[i], sentence[i + 1]) for i in range(len(sentence) - 1)]
 
     for bigram in bigrams:
         if bigram_counts[bigram] == 0:
